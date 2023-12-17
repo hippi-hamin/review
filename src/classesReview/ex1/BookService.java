@@ -66,6 +66,16 @@ public class BookService {
      *      id를 입력받고 Repository로 부터 id에 해당 하는 도서 정보를 출력
      *      없으면 없다고 출력
      */
+    public void findById() {
+        System.out.print("조회 id: ");
+        Long id = scanner.nextLong();
+        BookDTO bookDTO = bookRepository.findById(id);  // 스캐너로 받은 id값이 findById에 parameter로 들어감.
+        if (bookDTO != null) {
+            System.out.println("bookDTO = " + bookDTO);
+        } else {
+            System.out.println("조회결과가 없습니다!");
+        }
+    }
 
     /**
      * 도서조회 메서드
