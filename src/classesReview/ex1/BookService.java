@@ -1,11 +1,22 @@
 package classesReview.ex1;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class BookService {
     Scanner scanner = new Scanner(System.in);
     BookRepository bookRepository = new BookRepository();
 
+    /**
+     * 도서등록 메서드
+     * name: save
+     * parameter: x
+     * return: x
+     * 실행내용
+     *      스캐너로 도서명, 저자, 가격, 출판사정보를 입력받고
+     *      BookDTO 객체에 담아서 Repository로 전달하여 저장이 되도록 함
+     *      등록 여부를 출력한다.(등록성공 or 등록실패)
+     */
     public void save() {
         // 각 앞으로 작성할 필드값을 변수로 잡아주기.
         System.out.print("도서명: ");
@@ -30,16 +41,6 @@ public class BookService {
         }
 
     }
-    /**
-     * 도서등록 메서드
-     * name: save
-     * parameter: x
-     * return: x
-     * 실행내용
-     *      스캐너로 도서명, 저자, 가격, 출판사정보를 입력받고
-     *      BookDTO 객체에 담아서 Repository로 전달하여 저장이 되도록 함
-     *      등록 여부를 출력한다.(등록성공 or 등록실패)
-     */
 
     /**
      * 도서목록 메서드
@@ -49,6 +50,12 @@ public class BookService {
      * 실행내용
      *      Repository로 부터 목록을 리턴 받아서 목록에 있는 모든 정보를 출력
      */
+    public void findAll() {
+        List<BookDTO> bookDTOList = bookRepository.findAll();
+        for (BookDTO bookDTO : bookDTOList) {  // for each 형식
+            System.out.println("bookDTO = " + bookDTO); // Repository로 부터 받은 bookDTO값 출력
+        }
+    }
 
     /**
      * 도서조회 메서드
