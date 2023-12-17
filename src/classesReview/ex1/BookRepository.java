@@ -15,7 +15,7 @@ public class BookRepository {
      * parameter: BookDTO
      * return: boolean
      * 실행내용
-     *      Service로 부터 전달 받은 DTO 객체를 리스트에 저장하고 결과를 리턴
+     * Service로 부터 전달 받은 DTO 객체를 리스트에 저장하고 결과를 리턴
      */
     public boolean save(BookDTO bookDTO) {
         return bookDTOList.add(bookDTO);
@@ -27,7 +27,7 @@ public class BookRepository {
      * parameter: x
      * return: List<BookDTO>
      * 실행내용
-     *      Service로 부터 호출되면 리스트를 리턴
+     * Service로 부터 호출되면 리스트를 리턴
      */
     public List<BookDTO> findAll() {
         return bookDTOList;
@@ -39,8 +39,8 @@ public class BookRepository {
      * parameter: Long
      * return: BookDTO
      * 실행내용
-     *      Service로 부터 id를 전달받고 일치하는 결과를 찾아서 DTO를 리턴
-     *      없으면 null 리턴
+     * Service로 부터 id를 전달받고 일치하는 결과를 찾아서 DTO를 리턴
+     * 없으면 null 리턴
      */
     public BookDTO findById(Long id) {
         BookDTO bookDTO = null;
@@ -50,7 +50,7 @@ public class BookRepository {
 //            }
 //        }
         // foreach
-        for (BookDTO bookDTO1: bookDTOList) {
+        for (BookDTO bookDTO1 : bookDTOList) {
             if (id.equals(bookDTO1.getId())) {
                 bookDTO = bookDTO1;
             }
@@ -64,8 +64,16 @@ public class BookRepository {
      * parameter: String
      * return: BookDTO
      * 실행내용
-     *      Service로 부터 도서제목을 전달받고 일치하는 결과를 찾아서 DTO를 리턴
-     *      없으면 null 리턴
+     * Service로 부터 도서제목을 전달받고 일치하는 결과를 찾아서 DTO를 리턴
+     * 없으면 null 리턴
      */
-
+    public BookDTO findByTitle(String bookTitle) {
+        BookDTO bookDTO = null;
+        for (int i = 0; i < bookDTOList.size(); i++) {
+            if (bookTitle.equals(bookDTOList.get(i).getBookTitle())) {
+                bookDTO = bookDTOList.get(i);
+            }
+        }
+        return bookDTO;
+    }
 }
